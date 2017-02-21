@@ -1,3 +1,5 @@
+import scala.collection.JavaConverters._
+
 name := """play-scala-intro"""
 
 version := "1.0-SNAPSHOT"
@@ -10,9 +12,8 @@ libraryDependencies ++= Seq(
   jdbc,
   cache,
   ws,
-  "org.sorm-framework" % "sorm" % "0.3.22",
-  "com.h2database" % "h2" % "1.3.168",
+  "org.sorm-framework" % "sorm" % "0.3.21",  "com.h2database" % "h2" % "1.3.168",
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
-)
+).asJava
 
 scalacOptions += "-Ylog-classpath"

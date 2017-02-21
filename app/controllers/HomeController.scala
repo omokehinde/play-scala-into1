@@ -5,6 +5,7 @@ import javax.inject._
 import models.{DB, Person}
 import play.api.data.Form
 import play.api.data.Forms._
+import play.api.libs.json.Json
 import play.api.mvc._
 
 /**
@@ -34,7 +35,11 @@ class HomeController @Inject() extends Controller {
     val person = personForm.bindFromRequest.get
     DB.save(person)
     Redirect(routes.HomeController.index())
-    ???
+  }
+
+  def getPersons = Action {
+    val persons = DB.query[Person].fetch
+    Ok(Json.toJson(persons))
   }
 
 }
